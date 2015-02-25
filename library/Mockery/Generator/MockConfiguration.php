@@ -62,6 +62,19 @@ class MockConfiguration
      */
     protected $allMethods;
 
+    /**
+     * Instance cache of all constants
+     */
+    protected $allConstants;
+
+    /**
+     * @param array $targets
+     * @param array $blackListedMethods
+     * @param array $whiteListedMethods
+     * @param null $name
+     * @param bool $instanceMock
+     * @param array $parameterOverrides
+     */
     public function __construct(array $targets = array(), array $blackListedMethods = array(), array $whiteListedMethods = array(), $name = null, $instanceMock = false, array $parameterOverrides = array())
     {
         $this->addTargets($targets);
@@ -92,6 +105,14 @@ class MockConfiguration
         );
 
         return md5(serialize($vars));
+    }
+
+    /**
+     * @return Constant[]
+     */
+    public function getConstantsToMock()
+    {
+        return $this->allConstants;
     }
 
     /**
