@@ -26,6 +26,11 @@ class Constant
     public function __construct($name, $value)
     {
         $this->name = $name;
+
+        if(!is_int($value) && !is_float($value)) {
+            $value = "'{$value}'";
+        }
+
         $this->value = $value;
     }
 

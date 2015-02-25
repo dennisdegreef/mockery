@@ -60,12 +60,12 @@ class MockConfiguration
     /**
      * Instance cache of all methods
      */
-    protected $allMethods;
+    protected $allMethods = array();
 
     /**
      * Instance cache of all constants
      */
-    protected $allConstants;
+    protected $allConstants = array();
 
     /**
      * @param array $targets
@@ -83,6 +83,9 @@ class MockConfiguration
         $this->name = $name;
         $this->instanceMock = $instanceMock;
         $this->parameterOverrides = $parameterOverrides;
+
+        // @TODO: Remove me!
+        $this->allConstants[] = new Constant('FOO', 'Bar');
     }
 
     /**
